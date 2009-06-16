@@ -56,12 +56,12 @@ class UnitTest(CommonTest):
 
     def test_get_content(self):
         response = HttpResponse()
-        self.assertEqual(response.get_content(), ['', '\n'])
+        self.assertEqual(response.get_content(), [b'', '\n'])
 
     def test_response_properties(self):
         response = HttpResponse()
         self.assertEqual(response.headers, [('content-length', '0'), ('content-type', 'text/html'), ('Location', '/')])
-        self.assertEqual(response.content, ['', '\n'])
+        self.assertEqual(response.content, [b'', '\n'])
         self.assertEqual(response.status, '200 OK')
 
 if __name__ == "__main__":
