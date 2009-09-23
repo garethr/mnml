@@ -24,6 +24,7 @@ class UnitTest(CommonTest):
             fake_environ = {
                 'REQUEST_METHOD': 'BOB',
                 'QUERY_STRING': '',
+                'PATH_INFO': '/',
                 'wsgi.input': '{}',
             }
             return HttpRequest(fake_environ)
@@ -34,6 +35,7 @@ class UnitTest(CommonTest):
         fake_environ = {
             'REQUEST_METHOD': 'GET',
             'QUERY_STRING': 'test=test',
+            'PATH_INFO': '/',
             'wsgi.input': '{}',
         }
         request = HttpRequest(fake_environ)

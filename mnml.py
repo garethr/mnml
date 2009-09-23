@@ -81,6 +81,8 @@ class HttpRequest(object):
         # we often want access to the method so we'll make that 
         # easier to get at
         self.method = environ['REQUEST_METHOD']
+        # and the path
+        self.path = environ['PATH_INFO']
         
         # http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
         if self.method not in ('POST', 'GET', 'DELETE', 'PUT', 'HEAD', 

@@ -37,7 +37,7 @@ def run_tests(verbosity):
     for file_name in file_list:
         extension = os.path.splitext(file_name)[-1]
         # if they are python files or the test runner
-        if extension == '.py' and file_name != 'test.py':
+        if extension == '.py' and file_name != 'runtests.py':
             # work out the module name
             code_module_name = os.path.splitext(file_name)[0:-1][0]
             # now import the module
@@ -68,17 +68,17 @@ def run_tests(verbosity):
     runner = unittest.TextTestRunner(verbosity=int(verbosity))
     
     # set up coverage reporting
-    coverage.use_cache(0)
-    coverage.start()
+    #coverage.use_cache(0)
+    #coverage.start()
     
     # run the tests
     runner.run(suite)
     
     # stop coverage reporting
-    coverage.stop()
+    #coverage.stop()
     
     # output coverage report
-    coverage.report(code_modules, show_missing=1)
+    #coverage.report(code_modules, show_missing=1)
     
 if __name__ == '__main__':
     # instantiate the arguments parser

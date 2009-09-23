@@ -22,9 +22,29 @@ class Foo(RequestHandler):
             (number, number2)
         )
 
-    def PUT(self):
-        "A simple demonstration of a PUT method"
-        return HttpResponse("<h1>Hello World of Put</h1>")
+        def PUT(self):
+            "A simple demonstration of a PUT method"
+            return HttpResponse("<h1>Hello World of Put</h1>")
+    
+class Form(RequestHandler):
+    "Demonstrates display a form and accept POST data"
+    def GET(self, number=1, number2=1):
+        """
+        Display the form
+        """
+        # If you wanted you could use a template engine of your choice
+        # here as long as it can render to a string which
+        # can be returned in the body of a HttpResponse
+        return HttpResponse("""<form action="/form" method="post">
+                <input type="text" name="data" id="data"/>
+                <input type="submit" value="submit"/>
+            </form>"""
+        )
+
+    def POST(self):
+        "Take the POST data and display it on the page"
+        data = self.request.POST['data'].value
+        return HttpResponse("<h1>Hello World of %s</h1>" % data)
 
 class Bar(RequestHandler):
     "A second handler, demonstrating different methods"
@@ -57,6 +77,7 @@ class NotFoundPageHandler(RequestHandler):
             
 routes = (
     (r'^/$', Foo),
+    (r'^/form$', Form),
     (r'^/foo/([0-9]+)/([0-9]+)', Foo),
     (r'^/bar$', Bar),
     ('/.*', NotFoundPageHandler),
