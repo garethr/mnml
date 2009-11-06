@@ -335,6 +335,7 @@ class TokenBasedApplication(WebApplication):
 
             # if we found a match
             if matches:
+                groups = matches.groups()
                 handler = view(request)
                 # try the request method to see if the 
                 # handler supports it and if so then
