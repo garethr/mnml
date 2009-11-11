@@ -21,10 +21,10 @@ class Foo(RequestHandler):
         return HttpResponse("<h1>Hello World of %s and %s</h1>" % 
             (number, number2)
         )
-
-        def PUT(self):
-            "A simple demonstration of a PUT method"
-            return HttpResponse("<h1>Hello World of Put</h1>")
+    
+    def PUT(self):
+        "A simple demonstration of a PUT method"
+        return HttpResponse("<h1>Hello World of Put</h1>")
     
 class Form(RequestHandler):
     "Demonstrates display a form and accept POST data"
